@@ -12,7 +12,7 @@ public class ExamTest {
 
 		
 		
-		
+		System.out.println("test");
 	 
 	  String input = "abcdefgh";	 
 	  forSoonyul(input);
