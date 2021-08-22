@@ -1,10 +1,10 @@
 # Kubernetes 과제 - MongoDB 서비스를 위한 Manifest파일 작성
   - 현재 Kubernetes 클러스터 환경이 Virtual Box 툴로 Master Node 서버 1대와 Worker Node 서버 2대로 VM환경이 구축되어 있다.
-  - Master Node에는 Kubectl설치되고 사용할 수 있게 환경이 구성되어 있다.
-  - 지금 사용 주인 Kubernetes 클러스터 환경을 기반으로 한 MongoDB서비스를 제공하기 위한 YAML파일을 작성한다.
+  - Master Node에는 Kubectl설치되어 있고 명령을 통해 kubernetes 클러스트 환경을 제어할수 있는 환경이 구성되어 있다.
+  - 현재 구성한 Kubernetes 클러스터 환경 기반 MongoDB서비스 제공을 위한 YAML파일을 작성한다.
  
 ## 사전 작업
-  - 각 노드에 NFS설치 및 구성
+  - NFS설치 및 구성
   ```
   모든 노드 서버 설치
   sudo apt-get update && sudo apt-get install nfs-kernel-server
@@ -59,7 +59,7 @@ MongoDB 서비스를 위한 YAML파일 실행 순서를 아래와 같은 순서�
   ```
   
 ## Kubernetes PV(PersistentVolume) 등록
-  - 사전 작업으로 구성한 NFS에 PV환경 구성
+  - 사전 작업으로 구성한 NFS를 이용한 PV환경 구성
   
   파일 명: nfs-pv1.yaml
   ```
@@ -121,8 +121,8 @@ MongoDB 서비스를 위한 YAML파일 실행 순서를 아래와 같은 순서�
   mongodb-pvc   Bound    nfs-pv1   50Gi       RWO,ROX                       75s
   ```
 
-## MongoDB서비스 사용을 위한 Kubernetes Pod등록
-  - MongoDB서비스 사용을 위한 Kubernetes Pod를 등록하는 YAML파일 작성
+## MongoDB서비스를 제공하는 Kubernetes Pod 생성
+  - MongoDB서비스를 제공하는 Kubernetes Pod를 생성하는 YAML파일 작성
   
   파일 명: mongodb-pod.yaml
   ```
@@ -161,7 +161,7 @@ MongoDB 서비스를 위한 YAML파일 실행 순서를 아래와 같은 순서�
   ```
 
 
-##MongoDB 서비스 기동 확인 방법
+## MongoDB 서비스 기동 확인 방법
   - MongoDB서비스가 정상적으로 작동하는지 확인하기 위한 테스트 방법
   - pod설치 시 yaml파일에서 command: ["mongod","--bind_ip","0.0.0.0"] bind_ip옵션을 설정해야 외부 ip에서 해당 서버로 접근 가능(보안)
   ##Mongodb-client를 이용한 접근
@@ -184,4 +184,3 @@ MongoDB 서비스를 위한 YAML파일 실행 순서를 아래와 같은 순서�
    ```
    $k exec -it mongodb-pod -- mongo
    ```
-
