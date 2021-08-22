@@ -25,7 +25,7 @@
   ---------------------------------------------------------
   ```
 
-#MongoDB 서비스를 위한 YAML파일 실행 순서를 아래와 같은 순서로 진행한다.
+MongoDB 서비스를 위한 YAML파일 실행 순서를 아래와 같은 순서로 진행한다.
 
  ## kubernetes service 등록
   - kubernetes service를 NodePort type으로 등록하여 설정한 label를 사용하는 pod들에 대해 외부 접속 가능한 포트를 제공한다.
@@ -161,7 +161,7 @@
   ```
 
 
-#MongoDB 서비스 기동 확인
+##MongoDB 서비스 기동 확인 방법
   - MongoDB서비스가 정상적으로 작동하는지 확인하기 위한 테스트 방법
   - pod설치 시 yaml파일에서 command: ["mongod","--bind_ip","0.0.0.0"] bind_ip옵션을 설정해야 외부 ip에서 해당 서버로 접근 가능(보안)
   ##Mongodb-client를 이용한 접근
@@ -184,3 +184,4 @@
    ```
    $k exec -it mongodb-pod -- mongo
    ```
+
