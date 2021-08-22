@@ -164,7 +164,8 @@ MongoDB 서비스를 위한 YAML파일 실행 순서를 아래와 같은 순서�
 ## MongoDB 서비스 기동 확인 방법
   - MongoDB서비스가 정상적으로 작동하는지 확인하기 위한 테스트 방법
   - pod설치 시 yaml파일에서 command: ["mongod","--bind_ip","0.0.0.0"] bind_ip옵션을 설정해야 외부 ip에서 해당 서버로 접근 가능(보안)
-  ##Mongodb-client를 이용한 접근
+  
+  Mongodb-client를 이용한 접근
   ```
     #mongodb client설치
     sudo apt install mongodb-clients
@@ -180,7 +181,7 @@ MongoDB 서비스를 위한 YAML파일 실행 순서를 아래와 같은 순서�
     mongo --host 10.98.107.162 --port 80
   ```
   
-   ##Kubernetes exec명령어를 통한 접근
+   Kubernetes exec명령어를 통한 접근
    ```
    $k exec -it mongodb-pod -- mongo
    ```
